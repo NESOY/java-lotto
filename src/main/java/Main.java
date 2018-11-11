@@ -9,8 +9,6 @@ import java.util.List;
 public class Main {
 	public static void main(String[] args) {
 		LottoManager manager = new LottoManager();
-		manager.setLottoPrice(1000);
-
 		View.getInputPriceView();
 
 		int inputPrice = InputHandler.getInputPrice();
@@ -23,8 +21,10 @@ public class Main {
 		View.getInputPrizeLottoNosView();
 		List<Integer> prizeLottoNos = InputHandler.getPrizeLottos();
 		List<PrizeInfo> prizeInfos = manager.getPrizeInfo(buyedLottos, prizeLottoNos);
-
 		View.getResultView(prizeInfos);
+
+		double incomingPercent = manager.getIncomingPercent(buyedLottos, prizeLottoNos);
+		View.getIncomingPercentView(incomingPercent);
 	}
 }
 

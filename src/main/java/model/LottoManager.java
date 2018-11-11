@@ -10,7 +10,7 @@ import static java.util.stream.Collectors.toList;
 // Lotto 통계 낼 의무
 // 총 수익률을 계산 할 의무
 public class LottoManager {
-	private int lottoPrice;
+	private int lottoPrice = 1000;
 
 	public int getBuyLottoSize(int inputPrice) {
 		return inputPrice / lottoPrice;

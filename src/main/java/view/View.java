@@ -44,6 +44,10 @@ public class View {
 		printMessage(prizeInfoForPrint.getMatchingSize() + " 개 일치 (" + prizeInfoForPrint.getPrize() + " 원 )- " + matchingSize + " 개");
 	}
 
+	public static void getIncomingPercentView(double incomingPercent) {
+		printMessage("총 수익률은 "+ String.format("%.2f", incomingPercent) + "%입니다.");
+	}
+
 	private static void printMessage(String msg) {
 		System.out.println(msg);
 	}

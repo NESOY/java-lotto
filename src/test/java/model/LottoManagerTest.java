@@ -24,7 +24,6 @@ public class LottoManagerTest {
 
 	@Test
 	public void 매니저를_통해_로또를_구입할수있다(){
-		manager.setLottoPrice(1000);
 		int buyLottoSize = manager.getBuyLottoSize(14000);
 
 		List<Lotto> buyedLotto = manager.buyLotto(buyLottoSize);
@@ -34,7 +33,6 @@ public class LottoManagerTest {
 
 	@Test
 	public void 매니저를_통해_당첨정보를_얻을수있다(){
-		manager.setLottoPrice(1000);
 		int buyLottoSize = manager.getBuyLottoSize(14000);
 		List<Lotto> buyedLotto = manager.buyLotto(buyLottoSize);
 		List<Integer> prizeLottoNos = Arrays.asList(1,2,3,4,5,6);
@@ -46,7 +44,6 @@ public class LottoManagerTest {
 
 	@Test
 	public void 매니저를_통해_수익률을_얻을수있다(){
-		manager.setLottoPrice(1000);
 		int buyLottoSize = manager.getBuyLottoSize(140000);
 		List<Integer> prizeLottoNos = Arrays.asList(1,2,3,4,5,6);
 		List<Lotto> buyedLotto = manager.buyLotto(buyLottoSize);
