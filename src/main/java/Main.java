@@ -1,6 +1,7 @@
 import handler.InputHandler;
 import model.Lotto;
 import model.LottoManager;
+import model.PrizeLotto;
 import view.View;
 
 import java.util.List;
@@ -21,9 +22,9 @@ public class Main {
 
 		View.getInputPrizeLottoNosView();
 		List<Integer> prizeLottoNos = InputHandler.getPrizeLottos();
+		List<PrizeLotto> prizeInfos = manager.getPrizeInfo(buyedLottos, prizeLottoNos);
 
-
-		View.getResultView();
+		View.getResultView(prizeInfos);
 	}
 }
 
