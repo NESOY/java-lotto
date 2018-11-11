@@ -35,4 +35,13 @@ public class LottoManager {
 				.map(lotto -> lotto.getPrizeInfo(prizeLottoNos))
 				.collect(toList());
 	}
+
+	public double getIncomingPercent(List<Lotto> buyedLotto, List<Integer> prizeLottoNos) {
+		int investPrice = buyedLotto.size() * lottoPrice;
+		int IncomingPrice = buyedLotto.stream()
+				.mapToInt(lotto -> lotto.getPrizeInfo(prizeLottoNos).getPrize())
+				.sum();
+
+		return  (IncomingPrice / (double) investPrice) * 100;
+	}
 }

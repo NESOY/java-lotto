@@ -43,4 +43,16 @@ public class LottoManagerTest {
 
 		Assert.assertEquals(buyLottoSize, prizeInfos.size());
 	}
+
+	@Test
+	public void 매니저를_통해_수익률을_얻을수있다(){
+		manager.setLottoPrice(1000);
+		int buyLottoSize = manager.getBuyLottoSize(140000);
+		List<Integer> prizeLottoNos = Arrays.asList(1,2,3,4,5,6);
+		List<Lotto> buyedLotto = manager.buyLotto(buyLottoSize);
+
+		double incomingPercent = manager.getIncomingPercent(buyedLotto, prizeLottoNos);
+
+		System.out.println(incomingPercent);
+	}
 }
