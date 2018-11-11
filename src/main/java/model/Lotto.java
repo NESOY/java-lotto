@@ -31,6 +31,15 @@ public class Lotto {
 		return this.lottoNumbers.containsAll(lottoNumbers);
 	}
 
+	public PrizeLotto getPrizeInfo(List<Integer> prizeLottoNos) {
+		return PrizeLotto.getPrizeLotto(
+				(int) lottoNumbers.stream()
+						.map(prizeLottoNos::contains)
+						.filter(matchingLottoNo -> matchingLottoNo)
+						.count()
+		);
+	}
+
 	@Override
 	public String toString() {
 		return lottoNumbers.toString();

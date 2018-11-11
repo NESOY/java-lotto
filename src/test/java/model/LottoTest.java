@@ -6,6 +6,8 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class LottoTest {
 	@Test
 	public void 주어진6개의번호_로또6개의번호_일치하는_경우(){
@@ -31,5 +33,17 @@ public class LottoTest {
 		Lotto newLotto = new Lotto();
 
 		Assert.assertNotNull(newLotto.toString());
+	}
+
+	@Test
+	public void 로또는_스스로_당첨정보를_얻을수있다(){
+		List<Integer> prizeLottoNos = Arrays.asList(1,2,3,4,5,6);
+		List<Integer> lottoNos = Arrays.asList(1,2,3,4,7,7);
+
+		Lotto buyedLotto = new Lotto(lottoNos);
+
+		PrizeLotto prizeLotto = buyedLotto.getPrizeInfo(prizeLottoNos);
+
+		assertEquals(PrizeLotto.THIRD, prizeLotto);
 	}
 }
