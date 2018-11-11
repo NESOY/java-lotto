@@ -5,7 +5,8 @@ public enum PrizeLotto {
 	FIRST(6, 2000000000),
 	SECOND(5, 1500000),
 	THIRD(4, 50000),
-	FOURTH(3, 5000);
+	FOURTH(3, 5000),
+	NONE(0, 0);
 
 	private int matchSize;
 	private int prize;
@@ -15,21 +16,17 @@ public enum PrizeLotto {
 		this.prize = prize;
 	}
 
-	public static int getPrizePrice(int matchSize){
+	public static PrizeLotto getPrize(int matchSize){
 		for(PrizeLotto prize : PrizeLotto.values()){
 			if(prize.isMatching(matchSize)){
-				return prize.getPrize();
+				return prize;
 			}
 		}
 
-		return 0;
+		return NONE;
 	}
 
 	private boolean isMatching(int matchSize){
 		return this.matchSize == matchSize;
-	}
-
-	private int getPrize(){
-		return prize;
 	}
 }
