@@ -7,10 +7,10 @@ import static org.junit.Assert.assertEquals;
 public class PrizeLottoTest {
 	@Test
 	public void 매칭수를_입력하면_상금정보를_얻을수있다(){
-		int matchingLottoSize = 5;
+		int matchingLottoSize = PrizeLotto.SECOND.getMatchingSize();
 		PrizeLotto expectPrizeLotto = PrizeLotto.SECOND;
 
-		PrizeLotto result = PrizeLotto.getPrize(matchingLottoSize);
+		PrizeLotto result = PrizeLotto.getPrizeLotto(matchingLottoSize);
 
 		assertEquals(expectPrizeLotto, result);
 	}
@@ -20,7 +20,7 @@ public class PrizeLottoTest {
 		int matchingLottoSize = 2;
 		PrizeLotto expectPrizeLotto = PrizeLotto.NONE;
 
-		PrizeLotto result = PrizeLotto.getPrize(matchingLottoSize);
+		PrizeLotto result = PrizeLotto.getPrizeLotto(matchingLottoSize);
 
 		assertEquals(expectPrizeLotto, result);
 	}

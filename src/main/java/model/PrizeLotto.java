@@ -16,7 +16,7 @@ public enum PrizeLotto {
 		this.prize = prize;
 	}
 
-	public static PrizeLotto getPrize(int matchSize){
+	public static PrizeLotto getPrizeLotto(int matchSize){
 		for(PrizeLotto prize : PrizeLotto.values()){
 			if(prize.isMatching(matchSize)){
 				return prize;
@@ -28,5 +28,13 @@ public enum PrizeLotto {
 
 	private boolean isMatching(int matchSize){
 		return this.matchSize == matchSize;
+	}
+
+	public int getMatchingSize(){
+		return matchSize;
+	}
+
+	public int getPrize(){
+		return prize;
 	}
 }
