@@ -39,7 +39,7 @@ public class LottoManagerTest {
 		List<Lotto> buyedLotto = manager.buyLotto(buyLottoSize);
 		List<Integer> prizeLottoNos = Arrays.asList(1,2,3,4,5,6);
 
-		List<PrizeLotto> prizeInfos = manager.getPrizeInfo(buyedLotto, prizeLottoNos);
+		List<PrizeInfo> prizeInfos = manager.getPrizeInfo(buyedLotto, prizeLottoNos);
 
 		Assert.assertEquals(buyLottoSize, prizeInfos.size());
 	}

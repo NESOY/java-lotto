@@ -42,8 +42,8 @@ public class LottoTest {
 
 		Lotto buyedLotto = new Lotto(lottoNos);
 
-		PrizeLotto prizeLotto = buyedLotto.getPrizeInfo(prizeLottoNos);
+		PrizeInfo prizeLotto = buyedLotto.getPrizeInfo(prizeLottoNos);
 
-		assertEquals(PrizeLotto.THIRD, prizeLotto);
+		assertEquals(PrizeInfo.THIRD, prizeLotto);
 	}
 }
