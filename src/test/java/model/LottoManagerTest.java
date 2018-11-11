@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Assert;
@@ -29,5 +30,17 @@ public class LottoManagerTest {
 		List<Lotto> buyedLotto = manager.buyLotto(buyLottoSize);
 
 		Assert.assertFalse(buyedLotto.isEmpty());
+	}
+
+	@Test
+	public void 매니저를_통해_당첨정보를_얻을수있다(){
+		manager.setLottoPrice(1000);
+		int buyLottoSize = manager.getBuyLottoSize(14000);
+		List<Lotto> buyedLotto = manager.buyLotto(buyLottoSize);
+		List<Integer> prizeLottoNos = Arrays.asList(1,2,3,4,5,6);
+
+		List<PrizeLotto> prizeInfos = manager.getPrizeInfo(buyedLotto, prizeLottoNos);
+
+		Assert.assertEquals(buyLottoSize, prizeInfos.size());
 	}
 }

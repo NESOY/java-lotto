@@ -8,6 +8,7 @@ import static java.util.stream.Collectors.toList;
 
 // 로또 번호가 맞는지 확인할 의무
 // 로또 번호를 스스로 만들어내는 의무
+// 스스로_당첨정보를_얻을수있는 의무
 public class Lotto {
 	private static final int LOTTO_SIZE = 6;
 	private static final int MIN_LOTTO_NUMBER = 1;
