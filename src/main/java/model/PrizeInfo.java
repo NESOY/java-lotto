@@ -3,9 +3,10 @@ package model;
 // 상금을 알려줄 의무
 public enum PrizeInfo {
 	FIRST(6, 2000000000),
-	SECOND(5, 1500000),
-	THIRD(4, 50000),
-	FOURTH(3, 5000),
+	SECOND(5, 300000000),
+	THIRD(5, 1500000),
+	FOURTH(4, 50000),
+	FIFTH(3, 5000),
 	NONE(0, 0);
 
 	private int matchSize;
@@ -19,6 +20,22 @@ public enum PrizeInfo {
 	public static PrizeInfo getPrizeInfo(int matchSize){
 		for(PrizeInfo prize : PrizeInfo.values()){
 			if(prize.isMatching(matchSize)){
+				return prize;
+			}
+		}
+
+		return NONE;
+	}
+
+	public static PrizeInfo getPrizeInfo(int countOfMatch, boolean matchBonus) {
+		for(PrizeInfo prize : PrizeInfo.values()){
+			if(prize.isMatching(countOfMatch) && matchBonus){
+				return PrizeInfo.SECOND;
+			}
+			else if(prize.isMatching(countOfMatch) && !matchBonus){
+				return PrizeInfo.THIRD;
+			}
+			else if(prize.isMatching(countOfMatch)){
 				return prize;
 			}
 		}

@@ -8,20 +8,40 @@ public class PrizeLottoTest {
 	@Test
 	public void 매칭수를_입력하면_상금정보를_얻을수있다(){
 		int matchingLottoSize = PrizeInfo.SECOND.getMatchingSize();
-		PrizeInfo expectPrizeLotto = PrizeInfo.SECOND;
+		boolean matchBonus = true;
 
-		PrizeInfo result = PrizeInfo.getPrizeInfo(matchingLottoSize);
+		PrizeInfo result = PrizeInfo.getPrizeInfo(matchingLottoSize, matchBonus);
 
-		assertEquals(expectPrizeLotto, result);
+		assertEquals(PrizeInfo.SECOND, result);
 	}
 
 	@Test
 	public void 매칭이_없다면_0을_반환한다(){
-		int matchingLottoSize = 2;
-		PrizeInfo expectPrizeLotto = PrizeInfo.NONE;
+		int countOfMatch = 2;
+		boolean matchBonus = true;
 
-		PrizeInfo result = PrizeInfo.getPrizeInfo(matchingLottoSize);
+		PrizeInfo result = PrizeInfo.getPrizeInfo(countOfMatch, matchBonus);
 
-		assertEquals(expectPrizeLotto, result);
+		assertEquals(PrizeInfo.NONE, result);
+	}
+
+	@Test
+	public void 매칭이_5개이면서_Bonus번호가_당첨인경우_2등을_반환한다(){
+		int countOfMatch = 5;
+		boolean matchBonus = true;
+
+		PrizeInfo result = PrizeInfo.getPrizeInfo(countOfMatch, matchBonus);
+
+		assertEquals(PrizeInfo.SECOND, result);
+	}
+
+	@Test
+	public void 매칭이_5개이면서_Bonus번호가_당첨이아닌경우_3등을_반환한다(){
+		int countOfMatch = 5;
+		boolean matchBonus = false;
+
+		PrizeInfo result = PrizeInfo.getPrizeInfo(countOfMatch, matchBonus);
+
+		assertEquals(PrizeInfo.THIRD, result);
 	}
 }
