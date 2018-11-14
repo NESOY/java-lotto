@@ -11,8 +11,8 @@ public class View {
 		printMessage("구입급액을 입력해주세요.");
 	}
 
-	public static void getBuyedLottoSizeView(int buyedLottoSize){
-		printMessage(buyedLottoSize + " 개를 구매하셨습니다.");
+	public static void getBuyedLottoSizeView(int manualLottoSize, int autoLottoSize){
+		printMessage("수동으로 "+manualLottoSize+"장, 자동으로 "+autoLottoSize + " 개를 구매하셨습니다.");
 	}
 
 	public static void getLottoInfoView(List<Lotto> lottos){
@@ -46,6 +46,14 @@ public class View {
 
 	public static void getIncomingPercentView(double incomingPercent) {
 		printMessage("총 수익률은 "+ String.format("%.2f", incomingPercent) + "%입니다.");
+	}
+
+	public static void getInputManualLottoSizeView() {
+		printMessage("수동으로 구매할 로또의 수를 입력해 주세요.");
+	}
+
+	public static void getInputManualLottoNosView(){
+		printMessage("수동으로 구매할 번호를 입력해 주세요.");
 	}
 
 	private static void printMessage(String msg) {

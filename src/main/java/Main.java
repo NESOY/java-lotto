@@ -4,26 +4,42 @@ import model.LottoManager;
 import model.PrizeInfo;
 import view.View;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 	public static void main(String[] args) {
 		LottoManager manager = new LottoManager();
+		List<Lotto> userLottos = new ArrayList<>();
+
 		View.getInputPriceView();
-
 		int inputPrice = InputHandler.getInputPrice();
-		int buyLottoSize = manager.getBuyLottoSize(inputPrice);
-		View.getBuyedLottoSizeView(buyLottoSize);
 
-		List<Lotto> buyedLottos = manager.buyLotto(buyLottoSize);
-		View.getLottoInfoView(buyedLottos);
+		View.getInputManualLottoSizeView();
+		int manualLottoSize = InputHandler.getManualLottoSize();
+
+		View.getInputManualLottoNosView();
+		for(int i=0; i<manualLottoSize; i++) {
+			List<Integer> manualLottoNos = InputHandler.getManualLottoNos();
+			Lotto buyedManualLotto = manager.buyManualLotto(manualLottoNos);
+			userLottos.add(buyedManualLotto);
+		}
+
+		int totalLottoSize = manager.getBuyTotalLottoSize(inputPrice);
+
+		int autoLottoSize = totalLottoSize - manualLottoSize;
+		List<Lotto> buyedAutoLottos = manager.buyAutoLotto(autoLottoSize);
+		userLottos.addAll(buyedAutoLottos);
+
+		View.getBuyedLottoSizeView(manualLottoSize, autoLottoSize);
+		View.getLottoInfoView(userLottos);
 
 		View.getInputPrizeLottoNosView();
 		List<Integer> prizeLottoNos = InputHandler.getPrizeLottos();
-		List<PrizeInfo> prizeInfos = manager.getPrizeInfo(buyedLottos, prizeLottoNos);
+		List<PrizeInfo> prizeInfos = manager.getPrizeInfo(buyedAutoLottos, prizeLottoNos);
 		View.getResultView(prizeInfos);
 
-		double incomingPercent = manager.getIncomingPercent(buyedLottos, prizeLottoNos);
+		double incomingPercent = manager.getIncomingPercent(buyedAutoLottos, prizeLottoNos);
 		View.getIncomingPercentView(incomingPercent);
 	}
 }

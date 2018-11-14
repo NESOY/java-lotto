@@ -5,15 +5,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class InputHandler {
-	private static final String SPLITTER = ",";
+	private static final String SPLITTER = ", ";
 	private static final Scanner input = new Scanner(System.in);
 
 	public static int getInputPrice(){
-		return input.nextInt();
+		return getNumber();
 	}
 
 	public static int getManualLottoSize() {
-		return input.nextInt();
+		return getNumber();
 	}
 
 	public static List<Integer> getPrizeLottos(){
@@ -29,12 +29,18 @@ public class InputHandler {
 
 		String line = input.nextLine();
 
-		String[] prizeLottoNosOfString = line.split(SPLITTER);
+		String[] tokens = line.split(SPLITTER);
 
-		for (String prizeLottoNo : prizeLottoNosOfString) {
-			numbers.add(Integer.parseInt(prizeLottoNo));
+		for (String numberOfString : tokens) {
+			numbers.add(Integer.parseInt(numberOfString));
 		}
 
 		return numbers;
+	}
+
+	private static int getNumber(){
+		int result = input.nextInt();
+		input.nextLine();
+		return result;
 	}
 }
