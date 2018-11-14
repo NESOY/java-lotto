@@ -5,24 +5,36 @@ import java.util.List;
 import java.util.Scanner;
 
 public class InputHandler {
+	private static final String SPLITTER = ",";
 	private static final Scanner input = new Scanner(System.in);
 
 	public static int getInputPrice(){
 		return input.nextInt();
 	}
 
-	public static List<Integer> getPrizeLottos(){
-		List<Integer> prizeLottoNos = new ArrayList<>();
+	public static int getManualLottoSize() {
+		return input.nextInt();
+	}
 
-		input.nextLine();
+	public static List<Integer> getPrizeLottos(){
+		return getNumbers();
+	}
+
+	public static List<Integer> getManualLottoNos() {
+		return getNumbers();
+	}
+
+	private static List<Integer> getNumbers(){
+		List<Integer> numbers = new ArrayList<>();
+
 		String line = input.nextLine();
 
-		String[] prizeLottoNosOfString = line.split(",");
+		String[] prizeLottoNosOfString = line.split(SPLITTER);
 
 		for (String prizeLottoNo : prizeLottoNosOfString) {
-			prizeLottoNos.add(Integer.parseInt(prizeLottoNo));
+			numbers.add(Integer.parseInt(prizeLottoNo));
 		}
 
-		return prizeLottoNos;
+		return numbers;
 	}
 }
