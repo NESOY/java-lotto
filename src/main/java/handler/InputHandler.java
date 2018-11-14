@@ -16,6 +16,10 @@ public class InputHandler {
 		return getNumber();
 	}
 
+	public static int getBonusNo(){
+		return getNumber();
+	}
+
 	public static List<Integer> getPrizeLottos(){
 		return getNumbers();
 	}

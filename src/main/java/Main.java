@@ -36,9 +36,12 @@ public class Main {
 
 		View.getInputPrizeLottoNosView();
 		List<Integer> prizeLottoNos = InputHandler.getPrizeLottos();
+
+		View.getInputBonusNoView();
+		int bonusNo = InputHandler.getBonusNo();
+
 		List<PrizeInfo> prizeInfos = manager.getPrizeInfo(buyedAutoLottos, prizeLottoNos);
 		View.getResultView(prizeInfos);
-
 		double incomingPercent = manager.getIncomingPercent(buyedAutoLottos, prizeLottoNos);
 		View.getIncomingPercentView(incomingPercent);
 	}

@@ -56,6 +56,10 @@ public class View {
 		printMessage("수동으로 구매할 번호를 입력해 주세요.");
 	}
 
+	public static void getInputBonusNoView() {
+		printMessage("보너스 볼을 입력해 주세요.");
+	}
+
 	private static void printMessage(String msg) {
 		System.out.println(msg);
 	}
