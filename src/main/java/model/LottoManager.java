@@ -20,7 +20,7 @@ public class LottoManager {
 		this.lottoPrice = lottoPrice;
 	}
 
-	public List<Lotto> buyLotto(int buyLottoSize) {
+	public List<Lotto> buyAutoLotto(int buyLottoSize) {
 		List<Lotto> buyedLottos = new ArrayList<>();
 
 		for (int i = 0; i < buyLottoSize; i++) {
