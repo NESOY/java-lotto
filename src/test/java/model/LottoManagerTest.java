@@ -19,12 +19,12 @@ public class LottoManagerTest {
 	public void 입력금액에_해당하는_로또장수를_반환한다(){
 		manager.setLottoPrice(1000);
 
-		Assert.assertEquals(14, manager.getBuyLottoSize(14000));
+		Assert.assertEquals(14, manager.getBuyTotalLottoSize(14000));
 	}
 
 	@Test
 	public void 매니저를_통해_로또를_구입할수있다(){
-		int buyLottoSize = manager.getBuyLottoSize(14000);
+		int buyLottoSize = manager.getBuyTotalLottoSize(14000);
 
 		List<Lotto> buyedLotto = manager.buyAutoLotto(buyLottoSize);
 
@@ -33,7 +33,7 @@ public class LottoManagerTest {
 
 	@Test
 	public void 매니저를_통해_당첨정보를_얻을수있다(){
-		int buyLottoSize = manager.getBuyLottoSize(14000);
+		int buyLottoSize = manager.getBuyTotalLottoSize(14000);
 		List<Lotto> buyedLotto = manager.buyAutoLotto(buyLottoSize);
 		List<Integer> prizeLottoNos = Arrays.asList(1,2,3,4,5,6);
 
@@ -44,7 +44,7 @@ public class LottoManagerTest {
 
 	@Test
 	public void 매니저를_통해_수익률을_얻을수있다(){
-		int buyLottoSize = manager.getBuyLottoSize(140000);
+		int buyLottoSize = manager.getBuyTotalLottoSize(140000);
 		List<Integer> prizeLottoNos = Arrays.asList(1,2,3,4,5,6);
 		List<Lotto> buyedLotto = manager.buyAutoLotto(buyLottoSize);
 

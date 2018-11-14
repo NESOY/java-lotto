@@ -12,7 +12,7 @@ import static java.util.stream.Collectors.toList;
 public class LottoManager {
 	private int lottoPrice = 1000;
 
-	public int getBuyLottoSize(int inputPrice) {
+	public int getBuyTotalLottoSize(int inputPrice) {
 		return inputPrice / lottoPrice;
 	}
 
