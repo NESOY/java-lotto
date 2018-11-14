@@ -44,4 +44,8 @@ public class LottoManager {
 
 		return  (IncomingPrice / (double) investPrice) * 100;
 	}
+
+	public Lotto buyManualLotto(List<Integer> manualLottoNo) {
+		return new Lotto(manualLottoNo);
+	}
 }

@@ -52,4 +52,13 @@ public class LottoManagerTest {
 
 		System.out.println(incomingPercent);
 	}
+
+	@Test
+	public void 매니저를_통해_수동_로또를_얻을수있다(){
+		List<Integer> manualLottoNo = Arrays.asList(1,2,3,4,5,6);
+
+		Lotto manualLotto = manager.buyManualLotto(manualLottoNo);
+
+		Assert.assertTrue(manualLotto.isPrize(manualLottoNo));
+	}
 }
