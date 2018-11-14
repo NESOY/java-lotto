@@ -38,12 +38,13 @@ public class LottoTest {
 	@Test
 	public void 로또는_스스로_당첨정보를_얻을수있다(){
 		List<Integer> prizeLottoNos = Arrays.asList(1,2,3,4,5,6);
-		List<Integer> lottoNos = Arrays.asList(1,2,3,4,7,7);
+		List<Integer> lottoNos = Arrays.asList(1,2,3,4,5,8);
+		Integer bonusNo = 8;
 
 		Lotto buyedLotto = new Lotto(lottoNos);
 
-		PrizeInfo prizeLotto = buyedLotto.getPrizeInfo(prizeLottoNos);
+		PrizeInfo prizeLotto = buyedLotto.getPrizeInfo(prizeLottoNos, bonusNo);
 
-		assertEquals(PrizeInfo.THIRD, prizeLotto);
+		assertEquals(PrizeInfo.SECOND, prizeLotto);
 	}
 }

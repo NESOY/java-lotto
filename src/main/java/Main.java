@@ -40,9 +40,9 @@ public class Main {
 		View.getInputBonusNoView();
 		int bonusNo = InputHandler.getBonusNo();
 
-		List<PrizeInfo> prizeInfos = manager.getPrizeInfo(buyedAutoLottos, prizeLottoNos);
+		List<PrizeInfo> prizeInfos = manager.getPrizeInfo(buyedAutoLottos, prizeLottoNos, bonusNo);
 		View.getResultView(prizeInfos);
-		double incomingPercent = manager.getIncomingPercent(buyedAutoLottos, prizeLottoNos);
+		double incomingPercent = manager.getIncomingPercent(buyedAutoLottos, prizeLottoNos, bonusNo);
 		View.getIncomingPercentView(incomingPercent);
 	}
 }

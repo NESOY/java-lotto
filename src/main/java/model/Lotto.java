@@ -31,13 +31,14 @@ public class Lotto {
 	public boolean isPrize(List<Integer> lottoNumbers) {
 		return this.lottoNumbers.containsAll(lottoNumbers);
 	}
-
-	public PrizeInfo getPrizeInfo(List<Integer> prizeLottoNos) {
+	
+	public PrizeInfo getPrizeInfo(List<Integer> prizeLottoNos, int bonusNo) {
 		return PrizeInfo.getPrizeInfo(
 				(int) lottoNumbers.stream()
 						.map(prizeLottoNos::contains)
 						.filter(matchingLottoNo -> matchingLottoNo)
 						.count()
+				, lottoNumbers.contains(bonusNo)
 		);
 	}
 
