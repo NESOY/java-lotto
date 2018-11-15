@@ -28,6 +28,7 @@ public class View {
 		printMessage("----------");
 
 		List<PrizeInfo> printPrizeInfos = Arrays.asList(
+				PrizeInfo.FIFTH,
 				PrizeInfo.FOURTH,
 				PrizeInfo.THIRD,
 				PrizeInfo.SECOND,
