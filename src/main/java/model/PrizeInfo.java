@@ -17,16 +17,6 @@ public enum PrizeInfo {
 		this.prize = prize;
 	}
 
-	public static PrizeInfo getPrizeInfo(int matchSize){
-		for(PrizeInfo prize : PrizeInfo.values()){
-			if(prize.isMatching(matchSize)){
-				return prize;
-			}
-		}
-
-		return NONE;
-	}
-
 	public static PrizeInfo getPrizeInfo(int countOfMatch, boolean matchBonus) {
 		for(PrizeInfo prize : PrizeInfo.values()){
 			if(PrizeInfo.SECOND.isMatching(countOfMatch) && matchBonus){

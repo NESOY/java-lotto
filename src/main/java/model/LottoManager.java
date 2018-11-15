@@ -42,7 +42,7 @@ public class LottoManager {
 				.mapToInt(lotto -> lotto.getPrizeInfo(prizeLottoNos, bonusNo).getPrize())
 				.sum();
 
-		return  (IncomingPrice / (double) investPrice) * 100;
+		return  IncomingPrice == 0 ? 0 : (IncomingPrice / (double) investPrice) * 100;
 	}
 
 	public Lotto buyManualLotto(List<Integer> manualLottoNo) {

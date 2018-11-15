@@ -67,4 +67,17 @@ public class LottoManagerTest {
 
 		assertTrue(manualLotto.isPrize(manualLottoNo));
 	}
+
+	@Test
+	public void 수익률이_0이면_0을반환한다(){
+		List<Integer> prizeLottoNos = Arrays.asList(1,2,3,4,5,6);
+		List<Integer> wrongLotto = Arrays.asList(11,22,33,44,55,66);
+		Lotto buyedLotto = manager.buyManualLotto(wrongLotto);
+		List<Lotto> buyedLottos = Arrays.asList(buyedLotto);
+		int bonusNo = 7;
+
+		double result = manager.getIncomingPercent(buyedLottos, prizeLottoNos, bonusNo);
+
+		assertEquals(0, Double.compare(0.0, result));
+	}
 }
