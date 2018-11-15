@@ -7,6 +7,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 public class LottoManagerTest {
 	private LottoManager manager;
 
@@ -19,7 +22,7 @@ public class LottoManagerTest {
 	public void 입력금액에_해당하는_로또장수를_반환한다(){
 		manager.setLottoPrice(1000);
 
-		Assert.assertEquals(14, manager.getBuyTotalLottoSize(14000));
+		assertEquals(14, manager.getBuyTotalLottoSize(14000));
 	}
 
 	@Test
@@ -36,21 +39,24 @@ public class LottoManagerTest {
 		int buyLottoSize = manager.getBuyTotalLottoSize(14000);
 		List<Lotto> buyedLotto = manager.buyAutoLotto(buyLottoSize);
 		List<Integer> prizeLottoNos = Arrays.asList(1,2,3,4,5,6);
+		int bonusNo = 7;
 
-		List<PrizeInfo> prizeInfos = manager.getPrizeInfo(buyedLotto, prizeLottoNos);
+		List<PrizeInfo> prizeInfos = manager.getPrizeInfo(buyedLotto, prizeLottoNos, bonusNo);
 
-		Assert.assertEquals(buyLottoSize, prizeInfos.size());
+		assertEquals(buyLottoSize, prizeInfos.size());
 	}
 
 	@Test
 	public void 매니저를_통해_수익률을_얻을수있다(){
-		int buyLottoSize = manager.getBuyTotalLottoSize(140000);
 		List<Integer> prizeLottoNos = Arrays.asList(1,2,3,4,5,6);
-		List<Lotto> buyedLotto = manager.buyAutoLotto(buyLottoSize);
+		Lotto buyedLotto = manager.buyManualLotto(prizeLottoNos);
+		List<Lotto> buyedLottos = Arrays.asList(buyedLotto);
+		int bonusNo = 7;
+		double mockIncomingPercentPerLotto = (PrizeInfo.FIRST.getPrize()/(double)1000)*100;
 
-		double incomingPercent = manager.getIncomingPercent(buyedLotto, prizeLottoNos);
+		double incomingPercent = manager.getIncomingPercent(buyedLottos, prizeLottoNos, bonusNo);
 
-		System.out.println(incomingPercent);
+		assertEquals(0, Double.compare(mockIncomingPercentPerLotto, incomingPercent));
 	}
 
 	@Test
@@ -59,6 +65,6 @@ public class LottoManagerTest {
 
 		Lotto manualLotto = manager.buyManualLotto(manualLottoNo);
 
-		Assert.assertTrue(manualLotto.isPrize(manualLottoNo));
+		assertTrue(manualLotto.isPrize(manualLottoNo));
 	}
 }

@@ -44,4 +44,14 @@ public class PrizeLottoTest {
 
 		assertEquals(PrizeInfo.THIRD, result);
 	}
+
+	@Test
+	public void 매칭이_6개이면_1등을_반환한다(){
+		int countOfMatch = 6;
+		boolean matchBonus = true;
+
+		PrizeInfo result = PrizeInfo.getPrizeInfo(countOfMatch, matchBonus);
+
+		assertEquals(PrizeInfo.FIRST, result);
+	}
 }

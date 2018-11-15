@@ -29,10 +29,10 @@ public enum PrizeInfo {
 
 	public static PrizeInfo getPrizeInfo(int countOfMatch, boolean matchBonus) {
 		for(PrizeInfo prize : PrizeInfo.values()){
-			if(prize.isMatching(countOfMatch) && matchBonus){
+			if(PrizeInfo.SECOND.isMatching(countOfMatch) && matchBonus){
 				return PrizeInfo.SECOND;
 			}
-			else if(prize.isMatching(countOfMatch) && !matchBonus){
+			else if(PrizeInfo.THIRD.isMatching(countOfMatch) && !matchBonus){
 				return PrizeInfo.THIRD;
 			}
 			else if(prize.isMatching(countOfMatch)){
