@@ -17,15 +17,15 @@ public enum PrizeInfo {
 		this.prize = prize;
 	}
 
-	public static PrizeInfo getPrizeInfo(int countOfMatch, boolean matchBonus) {
+	public static PrizeInfo getPrizeInfo(int matchSize, boolean matchBonus) {
 		for(PrizeInfo prize : PrizeInfo.values()){
-			if(PrizeInfo.SECOND.isMatching(countOfMatch) && matchBonus){
+			if(PrizeInfo.SECOND.isMatching(matchSize) && matchBonus){
 				return PrizeInfo.SECOND;
 			}
-			else if(PrizeInfo.THIRD.isMatching(countOfMatch) && !matchBonus){
+			else if(PrizeInfo.THIRD.isMatching(matchSize) && !matchBonus){
 				return PrizeInfo.THIRD;
 			}
-			else if(prize.isMatching(countOfMatch)){
+			else if(prize.isMatching(matchSize)){
 				return prize;
 			}
 		}

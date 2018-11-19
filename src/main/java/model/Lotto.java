@@ -24,12 +24,12 @@ public class Lotto {
 		lottoNos = allLottoNumbers.stream().limit(LOTTO_SIZE).collect(toList());
 	}
 
-	public Lotto(List<LottoNo> lottoNumbers) {
-		this.lottoNos = lottoNumbers;
+	public Lotto(List<LottoNo> lottoNos) {
+		this.lottoNos = lottoNos;
 	}
 
-	public boolean isPrize(List<LottoNo> lottoNumbers) {
-		return this.lottoNos.containsAll(lottoNumbers);
+	public boolean isPrize(List<LottoNo> lottoNos) {
+		return this.lottoNos.containsAll(lottoNos);
 	}
 
 	public PrizeInfo getPrizeInfo(List<LottoNo> prizeLottoNos, LottoNo bonusNo) {

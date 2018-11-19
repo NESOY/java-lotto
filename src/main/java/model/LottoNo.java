@@ -8,7 +8,7 @@ public class LottoNo {
 
 	private int lottoNo;
 
-	public LottoNo(Integer lottoNo) {
+	public LottoNo(int lottoNo) {
 		if(lottoNo > MAX_LOTTO_NUMBER || lottoNo < MIN_LOTTO_NUMBER)
 			throw new InvalidLottoNoException();
 		this.lottoNo = lottoNo;

@@ -37,7 +37,7 @@ public class Main {
 		View.getLottoInfoView(userLottos);
 
 		View.getInputView(Korean.prizeLottoNos.toString());
-		List<LottoNo> prizeLottoNos = InputHandler.getPrizeLottos();
+		List<LottoNo> prizeLottoNos = InputHandler.getPrizeLottoNos();
 
 		View.getInputView(Korean.bonusNo.toString());
 		LottoNo bonusNo = InputHandler.getBonusNo();

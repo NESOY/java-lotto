@@ -10,7 +10,14 @@ import static java.util.stream.Collectors.toList;
 // Lotto 통계 낼 의무
 // 총 수익률을 계산 할 의무
 public class LottoManager {
+	private static final int PERCENT = 100;
+	private static final int EMPTY_INCOME_PRICE = 0;
+
 	private int lottoPrice = 1000;
+
+	public Lotto buyManualLotto(List<LottoNo> manualLottoNos) {
+		return new Lotto(manualLottoNos);
+	}
 
 	public int getBuyTotalLottoSize(int inputPrice) {
 		return inputPrice / lottoPrice;
@@ -38,14 +45,17 @@ public class LottoManager {
 
 	public double getIncomingPercent(List<Lotto> buyedLotto, List<LottoNo> prizeLottoNos, LottoNo bonusNo) {
 		int investPrice = buyedLotto.size() * lottoPrice;
-		int IncomingPrice = buyedLotto.stream()
+		int incomingPrice = buyedLotto.stream()
 				.mapToInt(lotto -> lotto.getPrizeInfo(prizeLottoNos, bonusNo).getPrize())
 				.sum();
 
-		return  IncomingPrice == 0 ? 0 : (IncomingPrice / (double) investPrice) * 100;
+		return getIncomingPercent(incomingPrice, investPrice);
 	}
 
-	public Lotto buyManualLotto(List<LottoNo> manualLottoNo) {
-		return new Lotto(manualLottoNo);
+	private double getIncomingPercent(int incomeingPrice, int investPrice){
+		if (incomeingPrice == EMPTY_INCOME_PRICE)
+			return EMPTY_INCOME_PRICE;
+
+		return (incomeingPrice / (double) investPrice) * PERCENT;
 	}
 }
