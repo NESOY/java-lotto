@@ -2,6 +2,7 @@ import handler.InputHandler;
 import lang.Korean;
 import model.Lotto;
 import model.LottoManager;
+import model.LottoNo;
 import model.PrizeInfo;
 import view.View;
 
@@ -21,7 +22,7 @@ public class Main {
 
 		View.getInputView(Korean.ManualLotto.toString());
 		for(int i=0; i<manualLottoSize; i++) {
-			List<Integer> manualLottoNos = InputHandler.getManualLottoNos();
+			List<LottoNo> manualLottoNos = InputHandler.getManualLottoNos();
 			Lotto buyedManualLotto = manager.buyManualLotto(manualLottoNos);
 			userLottos.add(buyedManualLotto);
 		}
@@ -36,10 +37,10 @@ public class Main {
 		View.getLottoInfoView(userLottos);
 
 		View.getInputView(Korean.prizeLottoNos.toString());
-		List<Integer> prizeLottoNos = InputHandler.getPrizeLottos();
+		List<LottoNo> prizeLottoNos = InputHandler.getPrizeLottos();
 
 		View.getInputView(Korean.bonusNo.toString());
-		int bonusNo = InputHandler.getBonusNo();
+		LottoNo bonusNo = InputHandler.getBonusNo();
 
 		List<PrizeInfo> prizeInfos = manager.getPrizeInfo(userLottos, prizeLottoNos, bonusNo);
 		View.getResultView(Korean.PrizelottoTitle.toString(), prizeInfos);

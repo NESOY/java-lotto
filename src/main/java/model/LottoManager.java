@@ -30,13 +30,13 @@ public class LottoManager {
 		return buyedLottos;
 	}
 
-	public List<PrizeInfo> getPrizeInfo(List<Lotto> buyedLotto, List<Integer> prizeLottoNos, int bonusNo) {
+	public List<PrizeInfo> getPrizeInfo(List<Lotto> buyedLotto, List<LottoNo> prizeLottoNos, LottoNo bonusNo) {
 		return buyedLotto.stream()
 				.map(lotto -> lotto.getPrizeInfo(prizeLottoNos, bonusNo))
 				.collect(toList());
 	}
 
-	public double getIncomingPercent(List<Lotto> buyedLotto, List<Integer> prizeLottoNos, int bonusNo) {
+	public double getIncomingPercent(List<Lotto> buyedLotto, List<LottoNo> prizeLottoNos, LottoNo bonusNo) {
 		int investPrice = buyedLotto.size() * lottoPrice;
 		int IncomingPrice = buyedLotto.stream()
 				.mapToInt(lotto -> lotto.getPrizeInfo(prizeLottoNos, bonusNo).getPrize())
@@ -45,7 +45,7 @@ public class LottoManager {
 		return  IncomingPrice == 0 ? 0 : (IncomingPrice / (double) investPrice) * 100;
 	}
 
-	public Lotto buyManualLotto(List<Integer> manualLottoNo) {
+	public Lotto buyManualLotto(List<LottoNo> manualLottoNo) {
 		return new Lotto(manualLottoNo);
 	}
 }

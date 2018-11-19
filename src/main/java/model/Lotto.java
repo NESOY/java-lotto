@@ -11,39 +11,39 @@ import static java.util.stream.Collectors.toList;
 // 스스로_당첨정보를_얻을수있는 의무
 public class Lotto {
 	private static final int LOTTO_SIZE = 6;
-	private static final int MIN_LOTTO_NUMBER = 1;
-	private static final int MAX_LOTTO_NUMBER = 46;
 
-	private List<Integer> lottoNumbers;
+	private List<LottoNo> lottoNos;
 
 	public Lotto() {
-		List<Integer> allLottoNumbers = IntStream.range(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER).boxed().collect(toList());
+		List<LottoNo> allLottoNumbers = IntStream.range(LottoNo.getMinLottoNo(), LottoNo.getMaxLottoNo()+1)
+				.mapToObj(LottoNo::new)
+				.collect(toList());
 
 		Collections.shuffle(allLottoNumbers);
 
-		lottoNumbers = allLottoNumbers.stream().limit(LOTTO_SIZE).collect(toList());
+		lottoNos = allLottoNumbers.stream().limit(LOTTO_SIZE).collect(toList());
 	}
 
-	public Lotto(List<Integer> lottoNumbers) {
-		this.lottoNumbers = lottoNumbers;
+	public Lotto(List<LottoNo> lottoNumbers) {
+		this.lottoNos = lottoNumbers;
 	}
 
-	public boolean isPrize(List<Integer> lottoNumbers) {
-		return this.lottoNumbers.containsAll(lottoNumbers);
+	public boolean isPrize(List<LottoNo> lottoNumbers) {
+		return this.lottoNos.containsAll(lottoNumbers);
 	}
 
-	public PrizeInfo getPrizeInfo(List<Integer> prizeLottoNos, int bonusNo) {
+	public PrizeInfo getPrizeInfo(List<LottoNo> prizeLottoNos, LottoNo bonusNo) {
 		return PrizeInfo.getPrizeInfo(
-				(int) lottoNumbers.stream()
+				(int) lottoNos.stream()
 						.map(prizeLottoNos::contains)
 						.filter(matchingLottoNo -> matchingLottoNo)
 						.count()
-				, lottoNumbers.contains(bonusNo)
+				, lottoNos.contains(bonusNo)
 		);
 	}
 
 	@Override
 	public String toString() {
-		return lottoNumbers.toString();
+		return lottoNos.toString();
 	}
 }

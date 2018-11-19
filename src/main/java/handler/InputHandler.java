@@ -1,8 +1,12 @@
 package handler;
 
+import model.LottoNo;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static java.util.stream.Collectors.toList;
 
 public class InputHandler {
 	private static final String SPLITTER = ", ";
@@ -16,19 +20,19 @@ public class InputHandler {
 		return getNumber();
 	}
 
-	public static int getBonusNo(){
-		return getNumber();
+	public static LottoNo getBonusNo(){
+		return new LottoNo(getNumber());
 	}
 
-	public static List<Integer> getPrizeLottos(){
+	public static List<LottoNo> getPrizeLottos(){
 		return getNumbers();
 	}
 
-	public static List<Integer> getManualLottoNos() {
+	public static List<LottoNo> getManualLottoNos() {
 		return getNumbers();
 	}
 
-	private static List<Integer> getNumbers(){
+	private static List<LottoNo> getNumbers(){
 		List<Integer> numbers = new ArrayList<>();
 
 		String line = input.nextLine();
@@ -39,7 +43,7 @@ public class InputHandler {
 			numbers.add(Integer.parseInt(numberOfString));
 		}
 
-		return numbers;
+		return numbers.stream().map(LottoNo::new).collect(toList());
 	}
 
 	private static int getNumber(){
